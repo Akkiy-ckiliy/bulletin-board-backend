@@ -5,11 +5,15 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const port = process.env.PORT || 3001;
+  //環境変数からポートを取得(render.comを使う都合上)
+
   app.enableCors({
-    origin: 'http://localhost:3000', // Reactのポートを指定
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // 許可するメソッド
-    credentials: true, // クッキーなどの資格情報の送信を許可
+    origin: '*', // Reactのポートを指定
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept', // 許可するメソッド
   });
-  await app.listen(process.env.PORT ?? 3001);
+
+  console.log(`listening on port ${port}`)
+  await app.listen(port ?? '0.0.0.0');
 }
 bootstrap();
