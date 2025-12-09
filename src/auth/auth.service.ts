@@ -24,13 +24,14 @@ export class AuthService { //Userテーブル,Authテーブルを操作するた
     //パスワードをハッシュ化
     const trimmedPassword = password.trim();
 
-    const hash = trimmedPassword;
+    // const hash = trimmedPassword;
 
     const user = await this.userRepository.findOne({//データベースで検索(認証)を行う
       where: {
-        id: Number(name),
+        // id: Number(name),
         // hash: Equal(hash), //ここは元のパスワードではなくハッシュ化されたもの同士で調べる
-        hash: hash,
+        email: name,
+        hash: trimmedPassword,
       },
     });
 
