@@ -64,7 +64,7 @@ export class AuthService { //Userテーブル,Authテーブルを操作するた
       const record = {
         user_id: user.id,
         token: token,
-        expire_at: expire.toISOString(),
+        expire: expire.toISOString(),
         //randomUUID：36文字のハイフン付きの英数字を出してくれるから安全なトークンの一意パスを作れる
         //toISOString：現在の時刻をデータベースが理解できるように文字列にする
       };
