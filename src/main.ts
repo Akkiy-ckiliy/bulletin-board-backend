@@ -10,7 +10,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: '*', // Reactのポートを指定
-    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept', // 許可するメソッド
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept Authorization', // 許可するメソッド
   });
 
   console.log(`listening on port ${port}`)
